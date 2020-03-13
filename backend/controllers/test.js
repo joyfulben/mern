@@ -1,4 +1,4 @@
-const amiibo = require('express').Router()
+const amiibos = require('express').Router()
 
 // Schema
 // const Amiibo = require('../models/test.js')
@@ -35,3 +35,5 @@ _                _        ____             _
            |___/
 
 */
+
+module.exports = amiibos
