@@ -20,7 +20,7 @@ ____             _
 
 // Index
 
-  amiibo.get('/', (req.res) => {
+  amiibos.get('/', (req, res) => {
     res.send("This is displaying our page!")
   })
 
