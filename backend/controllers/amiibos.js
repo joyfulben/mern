@@ -1,4 +1,8 @@
 const amiibos = require('express').Router()
+const Amiibo = require('../models/amiibos.js')
+
+
+
 
 // Schema
 // const Amiibo = require('../models/test.js')
@@ -18,12 +22,15 @@ ____             _
 
 */
 
-// Index
-
-  amiibos.get('/', (req, res) => {
-    res.send("This is displaying our page!")
+//Index
+amiibos.get('/', (req, res) => {
+  Amiibo.find({}, (err, foundAmiibos) => {
+    if (err) {
+      res.status(400).json({ error: err.message })
+    }
+    res.status(200).json(foundAmiibos)
   })
-
+})
 
 /*
 
@@ -35,5 +42,34 @@ _                _        ____             _
            |___/
 
 */
+//Create
+amiibos.post('/', async(req, res) => {
+  Amiibo.create(req.body, (error, createdAmiibo) => {
+    if (error) {
+      res.status(400).json({error: error.message})
+    }
+    res.status(200).send(createdAmiibo)
+  })
+})
+
+//Delete
+amiibos.delete('/:id', (req, res) => {
+  Amiibo.findByIdAndRemove(req.params.id, (err, deletedAmiibo) => {
+    if (err) {
+      res.status(400).json({ error: err.message })
+    }
+    res.status(200).json(deletedAmiibo)
+  })
+})
+
+//Update
+amiibos.put('/:id', (req, res) => {
+  Amiibo.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, updatedAmiibo) => {
+    if (err) {
+      res.status(400).json({ error: err.message })
+    }
+    res.status(200).json(updatedAmiibo)
+  })
+})
 
 module.exports = amiibos
