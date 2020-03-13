@@ -1,26 +1,24 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+
+    }
+  }
+  render () {
+    return (
+      <>
+        <header>
+          <h1>Amibo Wishlist</h1>
+        </header>
+        <footer>
+          <a href="https://www.nintendo.com/amiibo/">Amiibo Info</a>
+          <h4>MADE BY JAMAL AND BEN</h4>
+          <h5>Special thanks to <a href="https://www.amiiboapi.com/">AmiiboAPI</a></h5>
+        </footer>
+      </>
+    )
+  }
 }
-
-export default App;
