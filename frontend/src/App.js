@@ -35,8 +35,9 @@ if (process.env.NODE_ENV === 'development') {
       }
     }
     render(){
-      <>
+
       return(
+        <>
         <h1>Welcome to Amiibo Wishlist!</h1>
         <footer>
           <a href="https://www.nintendo.com/amiibo/">Amiibo Info</a>
@@ -47,9 +48,3 @@ if (process.env.NODE_ENV === 'development') {
       )
     }
   }
-
-
-
-        
-     
-
