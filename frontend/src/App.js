@@ -1,10 +1,11 @@
 import React from 'react';
+
 let baseURL = ''
 if (process.env.NODE_ENV === 'development') {
   baseURL = 'http://localhost:3003'
 }
 
-  class App extends React.Component {
+  export default class App extends React.Component {
     constructor(props){
       super(props)
       this.state = {
@@ -35,10 +36,21 @@ if (process.env.NODE_ENV === 'development') {
       }
     }
     render(){
+      <>
       return(
         <h1>Welcome to Amiibo Wishlist!</h1>
+        <footer>
+          <a href="https://www.nintendo.com/amiibo/">Amiibo Info</a>
+          <h4>MADE BY JAMAL AND BEN</h4>
+          <h5>Special thanks to <a href="https://www.amiiboapi.com/">AmiiboAPI</a></h5>
+        </footer>
+         </>
       )
     }
   }
 
-export default App;
+
+
+        
+     
+
