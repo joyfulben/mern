@@ -8,7 +8,8 @@ if (process.env.NODE_ENV === 'development') {
     constructor(props){
       super(props)
       this.state = {
-        amiibos: [],
+        amiiboExternal: [],
+        amiiboWishlist: [],
         isHidden: false
       }
     }
@@ -19,17 +20,15 @@ if (process.env.NODE_ENV === 'development') {
 
     async getAmiibos() {
       try {
-        // SETTING THE ARRAY WE ARE PERMUTING TO
-        let completeData = []
         // INITIAL DATABASE PULL OF THE CUSTOM AMIIBOS
         let response = await fetch(`${baseURL}/amiibos`)
         let data = await response.json()
         // PULLING FROM EXTERNAL API
         let amiiboExternalApi = await fetch(`https://www.amiiboapi.com/api/amiibo/`)
         let externalData = await amiiboExternalApi.json()
-        completeData = [data, ...externalData.amiibo]
-        this.setState({amiibos: completeData})
-        console.log(completeData);
+        // SETTING STATE OF THE AMIIBO ARRAYS
+        this.setState({amiiboExternal: externalData, amiiboWishlist: data})
+
       } catch (err) {
         console.log(err);
       }
