@@ -40,7 +40,7 @@ if (process.env.NODE_ENV === 'development') {
       return(
         <>
         <h1>Welcome to Amiibo Wishlist!</h1>
-          <AmiiboHomepage mainList={amiiboExternal} wishList={amiiboWishlist} />
+          <AmiiboHomepage mainList={this.state.amiiboExternal} wishList={this.state.amiiboWishlist} />
 
         <footer>
           <a href="https://www.nintendo.com/amiibo/">Amiibo Info</a>
