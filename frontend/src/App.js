@@ -28,6 +28,7 @@ if (process.env.NODE_ENV === 'development') {
         // PULLING FROM EXTERNAL API
         let amiiboExternalApi = await fetch(`https://www.amiiboapi.com/api/amiibo/`)
         let externalData = await amiiboExternalApi.json()
+        externalData = externalData.amiibo.slice(0, 20)
         // SETTING STATE OF THE AMIIBO ARRAYS
         this.setState({amiiboExternal: externalData, amiiboWishlist: data})
 
