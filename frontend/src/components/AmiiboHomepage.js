@@ -14,11 +14,13 @@ import Wishlist from './Wishlist.js'
         <ul>
 
         { this.props.mainList.map(amiibo => {
-          return (
-          <li>
 
+          return (
+
+          <li key={this.props.mainList.indexOf(amiibo)}>
             <img src={amiibo.image} />
             <p>{amiibo.name}</p>
+            {this.props.mainList.indexOf(amiibo)}
           </li>
           )
         })}
