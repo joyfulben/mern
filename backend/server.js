@@ -19,7 +19,7 @@ const corsOptions = {
 app.use(cors(corsOptions))
 mongoose.connection.on('error', error => { console.log(error.message + 'Remember to run mongo or something')})
 mongoose.connection.on('disconnected', ()=> console.log('we are disconnected'))
-mongoose.connect('mongodb://localhost:27017/holidays', {useUnifiedTopology: true, useNewUrlParser: true})
+mongoose.connect('mongodb://localhost:27017/amiibos', {useUnifiedTopology: true, useNewUrlParser: true, useFindAndModify: false})
 mongoose.connection.once('open', () => {
   console.log('connected to mongoose')
 })
