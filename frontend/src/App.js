@@ -1,4 +1,5 @@
 import React from 'react';
+import AmiiboHomepage from './components/AmiiboHomepage'
 
 let baseURL = ''
 if (process.env.NODE_ENV === 'development') {
@@ -39,6 +40,8 @@ if (process.env.NODE_ENV === 'development') {
       return(
         <>
         <h1>Welcome to Amiibo Wishlist!</h1>
+          <AmiiboHomepage mainList={amiiboExternal} wishList={amiiboWishlist} />
+
         <footer>
           <a href="https://www.nintendo.com/amiibo/">Amiibo Info</a>
           <h4>MADE BY JAMAL AND BEN</h4>
