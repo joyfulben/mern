@@ -46,12 +46,8 @@ console.log(this.props.wishList[1]);
                 <hr />
                 </li>
                 <Update
-                update={this.props.update}
                 change={this.props.change}
-                submit={this.props.submit}
-                wishlist={this.props.wishList}
                 id={amiibo._id}
-                idChanger={this.props.id}
                 baseURL={this.props.baseURL}
                 handleAddAmiibo={this.props.handleAddAmiibo}
                 character={this.props.character}

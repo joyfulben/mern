@@ -26,16 +26,10 @@ if (process.env.NODE_ENV === 'development') {
       this.addToList = this.addToList.bind(this)
       this.handleUpdateAmiibo = this.handleUpdateAmiibo.bind(this)
       this.handleChange = this.handleChange.bind(this)
-      this.idChanger = this.idChanger.bind(this)
       this.handleAddAmiibo = this.handleAddAmiibo.bind(this)
     }
     componentDidMount(){
       this.getAmiibos()
-    }
-    idChanger (e) {
-      this.setState({
-        id: e
-      })
     }
     handleUpdateAmiibo(amiibo) {
       const copyAmiibos = [amiibo, ...this.state.amiiboWishlist]
@@ -45,6 +39,20 @@ if (process.env.NODE_ENV === 'development') {
     }
     handleChange (event) {
  this.setState({ [event.currentTarget.id]: event.currentTarget.value})
+}
+handleAddAmiibo(amiiboEdit) {
+  try{
+  let testId = amiiboEdit._id
+        let copyAmiibo = [...this.state.amiiboWishlist]
+  const foundAmiibo = copyAmiibo.findIndex(foundAmiibo => foundAmiibo._id === testId)
+
+  copyAmiibo[foundAmiibo].character = amiiboEdit.character
+  copyAmiibo[foundAmiibo].type = amiiboEdit.type
+  this.setState({amiiboWishlist: copyAmiibo})
+} catch(e){
+  console.error(e);
+}
+
 }
 
 
@@ -106,20 +114,6 @@ if (process.env.NODE_ENV === 'development') {
       }
     }
 
-    handleAddAmiibo(amiiboEdit) {
-      try{
-      let testId = amiiboEdit._id
-            let copyAmiibo = [...this.state.amiiboWishlist]
-      const foundAmiibo = copyAmiibo.findIndex(foundAmiibo => foundAmiibo._id === testId)
-
-      copyAmiibo[foundAmiibo].character = amiiboEdit.character
-      copyAmiibo[foundAmiibo].type = amiiboEdit.type
-      this.setState({amiiboWishlist: copyAmiibo})
-    } catch(e){
-      console.error(e);
-    }
-
-    }
     render(){
       console.log(this.state.amiiboWishlist);
       return(
@@ -132,7 +126,6 @@ if (process.env.NODE_ENV === 'development') {
           update={this.handleUpdateAmiibo}
           change={this.handleChange}
           submit={this.handleSubmit}
-          id={this.idChanger}
           baseURL={baseURL}
           handleAddAmiibo={this.handleAddAmiibo}
           character={this.state.character}

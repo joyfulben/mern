@@ -3,9 +3,7 @@ import React, {Component} from 'react'
   export default class Update extends Component {
     constructor () {
       super ()
-      this.state = {
-        id: ''
-      }
+
       this.handleSubmit = this.handleSubmit.bind(this)
 
     }
@@ -36,7 +34,6 @@ let id = this.props.id
 
 
       <div>
-         <button onClick={() =>{    console.log(this.props.baseURL)}}></button>
         <form className="float-right" onSubmit={this.handleSubmit}>
           <div>
             <label htmlFor="character">Character Name</label>
@@ -44,8 +41,6 @@ let id = this.props.id
             <label htmlFor="type">Amiibo Type</label>
             <input type="text" id="type" name="type"
             onChange={this.props.change}/>
-            <label htmlFor="id"></label>
-            <input type="text" id="id" value={`${this.props.id}`} />
             <input type="submit" value="Update Amiibo" />
           </div>
         </form>
