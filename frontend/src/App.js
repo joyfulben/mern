@@ -28,9 +28,14 @@ if (process.env.NODE_ENV === 'development') {
       this.handleUpdateAmiibo = this.handleUpdateAmiibo.bind(this)
       this.handleChange = this.handleChange.bind(this)
       this.handleAddAmiibo = this.handleAddAmiibo.bind(this)
+      this.toggleView = this.toggleView.bind(this)
+      this.amiiboSniffer = this.amiiboSniffer.bind(this)
     }
     componentDidMount(){
       this.getAmiibos()
+    }
+    amiiboSniffer(amiibo){
+      this.setState({amiibo: amiibo})
     }
     handleUpdateAmiibo(amiibo) {
       const copyAmiibos = [amiibo, ...this.state.amiiboWishlist]
@@ -115,8 +120,15 @@ handleAddAmiibo(amiiboEdit) {
       }
     }
 
+    async toggleView(){
+      try{
+        this.setState({isHidden: !this.state.isHidden})
+      }catch(e){
+        console.error(e);
+      }
+    }
+
     render(){
-      console.log(this.state.amiiboWishlist);
       return(
         <>
         <h1>Welcome to <img src={amiiboImage} alt=''/> Wishlist!</h1>
@@ -127,11 +139,14 @@ handleAddAmiibo(amiiboEdit) {
           update={this.handleUpdateAmiibo}
           change={this.handleChange}
           submit={this.handleSubmit}
-          baseURL={baseURL}
           handleAddAmiibo={this.handleAddAmiibo}
           character={this.state.character}
           type={this.state.type}
-          showEdit={this.state.showEdit}
+          toggleView={this.toggleView}
+          isHidden={this.state.isHidden}
+          amiiboShower={this.state.amiibo}
+          amiiboSniffer={this.amiiboSniffer}
+
           />
         <footer className="d-flex justify-content-between">
           <a href="https://www.nintendo.com/amiibo/">Amiibo Info</a>

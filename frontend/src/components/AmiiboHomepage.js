@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
-import Update from './UpdateAmiibo.js'
-
+import Wishlist from './WishlistDisplay.js'
+import ShowAmiibo from './ShowAmiibo.js'
   export default class AmiiboHomepage extends Component {
     constructor(props){
       super(props)
@@ -11,7 +11,7 @@ import Update from './UpdateAmiibo.js'
 
     render(){
 // console.log(this.props.wishList.indexOf(this.props.wishList[0]._id));
-console.log(this.props.wishList[1]);
+console.log(this.props.mainList[1]);
       return(
         <div className="everything">
           <div className="amiibo-index">
@@ -20,7 +20,12 @@ console.log(this.props.wishList[1]);
 
             return (
 
-              <li className={`index${i} li-index`} key={i} onDoubleClick={() => this.props.add(i)}>
+              <li className={`index${i} li-index`}
+                key={i}
+                onMouseOver={() => this.props.amiiboSniffer(amiibo)}
+                onClick={this.props.toggleView} 
+                onDoubleClick={() => this.props.add(i)}>
+
                 <img  src={`${amiibo.image}`} alt=''/>
                 <p>{amiibo.character}</p>
               </li>
@@ -29,38 +34,22 @@ console.log(this.props.wishList[1]);
             })}
             </ul>
           </div>
-          <ul className="wishlist">
-            {this.props.wishList.map((amiibo, i) => {
+          {
+            this.props.isHidden ?
 
-               return (
+            <ShowAmiibo amiiboShower={this.props.amiiboShower} />
+            :
+            <Wishlist
+              wishList={this.props.wishList}
+              change={this.props.change}
+              id={this.props.id}
+              baseURL={this.props.baseURL}
+              handleAddAmiibo={this.props.handleAddAmiibo}
+              character={this.props.character}
+              type={this.props.type}/>
 
-              <div className="d-flex">
+          }
 
-                <li className={`wish${i} `} key={i + ''} onClick={() => {
-                  this.props.delete(amiibo._id)
-                }}>
-                <img src={`${amiibo.image}`} alt='' />
-                <p className="mx-auto">{amiibo.character}</p>
-                <button>edit</button>
-
-                <hr />
-                </li>
-
-                <Update
-                change={this.props.change}
-                id={amiibo._id}
-                baseURL={this.props.baseURL}
-                handleAddAmiibo={this.props.handleAddAmiibo}
-                character={this.props.character}
-                type={this.props.type}
-                key={amiibo._id}
-
-                 />
-
-              </div>
-          )
-          })}
-          </ul>
         </div>
       )
     }
