@@ -1,6 +1,9 @@
 import React from 'react';
+import amiiboImage from './amiiboImage.png';
+import backgroundImage from './tester.jpeg'
 import AmiiboHomepage from './components/AmiiboHomepage'
 let baseURL = ''
+
 if (process.env.NODE_ENV === 'development') {
   baseURL = 'http://localhost:3003'
 }
@@ -91,17 +94,17 @@ if (process.env.NODE_ENV === 'development') {
     render(){
       return(
         <>
-        <h1>Welcome to <img src="https://toppng.com/uploads/preview/amiibo-logo-11563072955fd60xvgciz.png" alt=''/> Wishlist!</h1>
+        <h1>Welcome to <img src={amiiboImage} alt=''/> Wishlist!</h1>
           <AmiiboHomepage mainList={this.state.amiiboExternal} wishList={this.state.amiiboWishlist}
           baseURL={baseURL}
           add={this.addToList}
           delete={this.deleteAmiibo}
 
           />
-        <footer className="d-flex justify-content-between m-3 p-3">
+        <footer className="d-flex justify-content-between">
           <a href="https://www.nintendo.com/amiibo/">Amiibo Info</a>
-          <h6>MADE BY JAMAL AND BEN</h6>
-          <h6>Special thanks to <a href="https://www.amiiboapi.com/">AmiiboAPI</a></h6>
+          <h4>MADE BY JAMAL AND BEN</h4>
+          <h5>Special thanks to <a href="https://www.amiiboapi.com/">AmiiboAPI</a></h5>
         </footer>
          </>
       )
