@@ -9,7 +9,6 @@ import React, {Component} from 'react'
 
     }
      componentDidMount() {
-       console.log(this.props.index);
        let dab = this.props.index
        this.setState({[`${dab}`]: false})
        this.props.stateGrabber([`${dab}`])
@@ -24,7 +23,7 @@ import React, {Component} from 'react'
 
 
       <div >
-      
+
         </div>
 
       )
