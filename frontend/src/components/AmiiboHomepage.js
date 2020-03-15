@@ -23,7 +23,7 @@ console.log(this.props.mainList[1]);
               <li className={`index${i} li-index`}
                 key={i}
                 onMouseOver={() => this.props.amiiboSniffer(amiibo)}
-                onClick={this.props.toggleView} 
+                onClick={this.props.toggleView}
                 onDoubleClick={() => this.props.add(i)}>
 
                 <img  src={`${amiibo.image}`} alt=''/>
@@ -46,7 +46,11 @@ console.log(this.props.mainList[1]);
               baseURL={this.props.baseURL}
               handleAddAmiibo={this.props.handleAddAmiibo}
               character={this.props.character}
-              type={this.props.type}/>
+              type={this.props.type}
+              toggleEdit={this.props.toggleEdit}
+              delete={this.props.delete}
+              editShow={this.props.editShow}
+              />
 
           }
 

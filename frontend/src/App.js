@@ -30,6 +30,10 @@ if (process.env.NODE_ENV === 'development') {
       this.handleAddAmiibo = this.handleAddAmiibo.bind(this)
       this.toggleView = this.toggleView.bind(this)
       this.amiiboSniffer = this.amiiboSniffer.bind(this)
+      this.toggleEdit = this.toggleEdit.bind(this)
+    }
+    async toggleEdit(){
+      this.setState({showEdit: !this.state.showEdit})
     }
     componentDidMount(){
       this.getAmiibos()
@@ -146,7 +150,8 @@ handleAddAmiibo(amiiboEdit) {
           isHidden={this.state.isHidden}
           amiiboShower={this.state.amiibo}
           amiiboSniffer={this.amiiboSniffer}
-
+          toggleEdit={this.toggleEdit}
+          editShow={this.state.showEdit}
           />
         <footer className="d-flex justify-content-between">
           <a href="https://www.nintendo.com/amiibo/">Amiibo Info</a>

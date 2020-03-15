@@ -63,6 +63,9 @@ h1 img {
   display: flex;
   background-image: url({backgroundImage});
 }
+.everything img{
+  height: 100px;
+}
 
 p {
   font-size: 12px;

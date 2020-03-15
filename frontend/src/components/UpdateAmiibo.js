@@ -3,10 +3,14 @@ import React, {Component} from 'react'
   export default class Update extends Component {
     constructor () {
       super ()
+      this.state = {
+        key: false
+      }
 
       this.handleSubmit = this.handleSubmit.bind(this)
 
     }
+
 
     async handleSubmit (event) {
       event.preventDefault();
@@ -45,7 +49,9 @@ import React, {Component} from 'react'
             <input type="submit" value="Update Amiibo" />
           </div>
         </form>
+
       </div>
+
       )
     }
   }
