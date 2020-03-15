@@ -150,8 +150,8 @@ handleAddAmiibo(amiiboEdit) {
           />
         <footer className="d-flex justify-content-between">
           <a href="https://www.nintendo.com/amiibo/">Amiibo Info</a>
-          <h4>MADE BY JAMAL AND BEN</h4>
-          <h5>Special thanks to <a href="https://www.amiiboapi.com/">AmiiboAPI</a></h5>
+          <h6>MADE BY JAMAL AND BEN</h6>
+          <h6>Special thanks to <a href="https://www.amiiboapi.com/">AmiiboAPI</a></h6>
         </footer>
          </>
       )
