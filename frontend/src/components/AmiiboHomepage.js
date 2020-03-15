@@ -8,7 +8,10 @@ import Update from './UpdateAmiibo.js'
         showSlide: false
       }
     }
+
     render(){
+// console.log(this.props.wishList.indexOf(this.props.wishList[0]._id));
+console.log(this.props.wishList[1]);
       return(
         <div className="everything">
           <div className="amiibo-index">
@@ -47,6 +50,11 @@ import Update from './UpdateAmiibo.js'
                 wishlist={this.props.wishList}
                 id={amiibo._id}
                 idChanger={this.props.id}
+                baseURL={this.props.baseURL}
+                handleAddAmiibo={this.props.handleAddAmiibo}
+                character={this.props.character}
+                type={this.props.type}
+                key={amiibo._id}
                  />
               </div>
           )
