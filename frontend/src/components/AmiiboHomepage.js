@@ -45,10 +45,12 @@ import ShowAmiibo from './ShowAmiibo.js'
               handleAddAmiibo={this.props.handleAddAmiibo}
               character={this.props.character}
               type={this.props.type}
+
               toggleEdit={this.props.toggleEdit}
               delete={this.props.delete}
               editShow={this.props.editShow}
               />
+
 
           }
 
