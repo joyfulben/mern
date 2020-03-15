@@ -1,6 +1,5 @@
 import React from 'react';
 import amiiboImage from './amiiboImage.png';
-import backgroundImage from './tester.jpeg'
 import AmiiboHomepage from './components/AmiiboHomepage'
 let baseURL = ''
 
@@ -30,6 +29,10 @@ if (process.env.NODE_ENV === 'development') {
       this.handleAddAmiibo = this.handleAddAmiibo.bind(this)
       this.toggleView = this.toggleView.bind(this)
       this.amiiboSniffer = this.amiiboSniffer.bind(this)
+      this.toggleEdit = this.toggleEdit.bind(this)
+    }
+    async toggleEdit(){
+      this.setState({showEdit: !this.state.showEdit})
     }
     componentDidMount(){
       this.getAmiibos()
@@ -58,10 +61,7 @@ handleAddAmiibo(amiiboEdit) {
 } catch(e){
   console.error(e);
 }
-
 }
-
-
     async getAmiibos() {
       try {
         // INITIAL DATABASE PULL OF THE CUSTOM AMIIBOS
@@ -77,8 +77,6 @@ handleAddAmiibo(amiiboEdit) {
         console.error(err);
       }
     }
-
-
     async deleteAmiibo (id){
    try {
    let response = await fetch(baseURL + '/amiibos/' +  id, {
@@ -146,7 +144,8 @@ handleAddAmiibo(amiiboEdit) {
           isHidden={this.state.isHidden}
           amiiboShower={this.state.amiibo}
           amiiboSniffer={this.amiiboSniffer}
-
+          toggleEdit={this.toggleEdit}
+          editShow={this.state.showEdit}
           />
         <footer className="d-flex justify-content-between">
           <a href="https://www.nintendo.com/amiibo/">Amiibo Info</a>
