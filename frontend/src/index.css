@@ -37,7 +37,7 @@ h1 img {
 
 .everything {
   display: flex;
-  background-image: url(backgroundImage);
+  background-image: url({backgroundImage});
 }
 .everything img{
   width: 50px;
