@@ -20,9 +20,9 @@ import Update from './UpdateAmiibo.js'
             <li className={`wish${i} `}  onClick={() => {
               this.props.delete(amiibo._id)
             }}>
-            <img src={`${amiibo.image}`} alt='' />
+            <img className="wish" src={`${amiibo.image}`} alt='' />
             <p className="mx-auto">{amiibo.character}</p>
-            <button>edit</button>
+            <button className="btn btn-outline-info btn-sm">edit</button>
 
             <hr />
             </li>
