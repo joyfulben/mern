@@ -10,32 +10,34 @@ import Wishlist from './Wishlist.js'
     }
     render(){
       return(
-        <div className="d-flex">
-        <div className="amiibo-index">
-        <Wishlist mainList={this.props.mainList} wishList={this.props.wishList} />
-        <ul className="d-flex flex-wrap">
-        { this.props.mainList.map((amiibo, i) => {
+        <div className="everything">
+          <div className="amiibo-index">
+            <Wishlist mainList={this.props.mainList} wishList={this.props.wishList} />
+            <ul className="ul-index d-flex flex-wrap">
+            { this.props.mainList.map((amiibo, i) => {
 
-          return (
-            <li key={i} onDoubleClick={() => this.props.add(i)}>
-              <img  src={`${amiibo.image}`} alt=''/>
-              <p>{amiibo.character}</p>
-            </li>
-        )
-        })}
-        </ul>
-        </div>
-        <ul className="wishlist">
-        { this.props.wishList.map((amiibo, i) => { return (
-            <li className={`wish${i} list-group-item`} key={i + ''} onClick={() => {
-              this.props.delete(amiibo._id)
-            }}>
-            <img src={`${amiibo.image}`} alt='' />
-            <p>{amiibo.character}</p>
-            </li>
+            return (
+              <li className={`index${i} li-index`} key={i} onDoubleClick={() => this.props.add(i)}>
+                <img  src={`${amiibo.image}`} alt=''/>
+                <p>{amiibo.character}</p>
+              </li>
+            )
+            })}
+            </ul>
+          </div>
+          <ul className="wishlist">
+            { this.props.wishList.map((amiibo, i) => { return (
+              <li className={`wish${i} `} key={i + ''} onClick={() => {
+                this.props.delete(amiibo._id)
+              }}>
+              <img src={`${amiibo.image}`} alt='' />
+              <p className="mx-auto">{amiibo.character}</p>
+              <hr />
+              </li>
+
           )
-        })}
-        </ul>
+          })}
+          </ul>
         </div>
       )
     }
