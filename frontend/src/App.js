@@ -10,15 +10,54 @@ if (process.env.NODE_ENV === 'development') {
       this.state = {
         amiiboExternal: [],
         amiiboWishlist: [],
+        amiibo: null,
         isHidden: false,
         character: '',
         gameSeries: '',
         image: '',
         type: '',
+        id: ''
       }
       this.deleteAmiibo = this.deleteAmiibo.bind(this)
       this.addToList = this.addToList.bind(this)
-      this.handleAddAmiibo = this.handleAddAmiibo.bind(this)
+      this.handleUpdateAmiibo = this.handleUpdateAmiibo.bind(this)
+      this.handleChange = this.handleChange.bind(this)
+      this.handleSubmit = this.handleSubmit.bind(this)
+      this.idChanger = this.idChanger.bind(this)
+    }
+    idChanger (id) {
+      this.setState({
+        id: id
+      })
+    }
+    handleUpdateAmiibo(amiibo) {
+      const copyAmiibos = [amiibo, ...this.state.amiiboWishlist]
+      this.setState({
+        amiiboWishlist: copyAmiibos
+      })
+    }
+    handleChange (event) {
+ this.setState({ [event.currentTarget.id]: event.currentTarget.value})
+}
+  async handleSubmit (event) {
+  try{
+    let response = await fetch(baseURL + '/amiibos/' + event.id,
+    {
+        method: 'PUT', // Put, Delete. Only for a non-Get request
+        body: JSON.stringify({}),
+        headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+        let updatedamiibo = await response.json()
+        const foundamiibo = this.state.amiiboWishlist.findIndex(foundItem => foundItem._id === event._id)
+        const copyAmiibo = [...this.state.amiiboWishlist]
+        copyAmiibo[foundamiibo].character = updatedamiibo.character
+        copyAmiibo[foundamiibo].type = updatedamiibo.type
+        this.setState({amiiboWishlist: copyAmiibo})
+      }catch(e){
+        console.error({'Error': e})
+      }
     }
 
     async getAmiibos() {
@@ -43,7 +82,6 @@ if (process.env.NODE_ENV === 'development') {
    let response = await fetch(baseURL + '/amiibos/' +  id, {
       method: 'DELETE'
       })
-      let data = await response.json()
       const foundAmiibo = this.state.amiiboWishlist.findIndex(amiibo => amiibo._id === id)
       const copyAmiibo = [...this.state.amiiboWishlist]
       copyAmiibo.splice(foundAmiibo, 1)
@@ -96,7 +134,10 @@ if (process.env.NODE_ENV === 'development') {
           baseURL={baseURL}
           add={this.addToList}
           delete={this.deleteAmiibo}
-
+          update={this.handleUpdateAmiibo}
+          change={this.handleChange}
+          submit={this.handleSubmit}
+          id={this.idChanger}
           />
         <footer className="d-flex justify-content-between m-3 p-3">
           <a href="https://www.nintendo.com/amiibo/">Amiibo Info</a>
