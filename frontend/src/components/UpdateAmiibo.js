@@ -29,7 +29,7 @@ import React, {Component} from 'react'
 
 
     render(){
-let id = this.props.id
+
       return (
 
 
