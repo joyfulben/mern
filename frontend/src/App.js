@@ -1,6 +1,5 @@
 import React from 'react';
 import amiiboImage from './amiiboImage.png';
-import backgroundImage from './tester.jpeg'
 import AmiiboHomepage from './components/AmiiboHomepage'
 let baseURL = ''
 
@@ -62,10 +61,7 @@ handleAddAmiibo(amiiboEdit) {
 } catch(e){
   console.error(e);
 }
-
 }
-
-
     async getAmiibos() {
       try {
         // INITIAL DATABASE PULL OF THE CUSTOM AMIIBOS
@@ -81,8 +77,6 @@ handleAddAmiibo(amiiboEdit) {
         console.error(err);
       }
     }
-
-
     async deleteAmiibo (id){
    try {
    let response = await fetch(baseURL + '/amiibos/' +  id, {

@@ -36,14 +36,13 @@ import Hidden from './HiddenDisplay.js'
 
           <div className="d-flex flex-row" key={i}>
 
-            <li className={`wish${i} `}  onClick={() => {
-              this.props.delete(amiibo._id)
-            }}>
+            <li className={`wish${i} `}>
             <img className="wish" src={`${amiibo.image}`} alt='' />
             <p className="mx-auto">{amiibo.character}</p>
-
-              <button onClick={()=>{this.stateChanger(i)}}>edit</button>
-
+            <div className="d-flex justify-content-between">
+              <button className="btn btn-outline-info" onClick={()=>{this.stateChanger(i)}}>edit</button>
+              <button className="btn btn-outline-danger" onClick={() => {this.props.delete(amiibo._id)}}>DELETE</button>
+            </div>
 
             <hr />
             </li>
