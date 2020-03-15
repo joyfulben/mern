@@ -5,7 +5,7 @@ import Update from './UpdateAmiibo.js'
     constructor(props){
       super(props)
       this.state = {
-        showSlide: false
+        showEdit: false
       }
     }
 
@@ -45,6 +45,7 @@ console.log(this.props.wishList[1]);
 
                 <hr />
                 </li>
+
                 <Update
                 change={this.props.change}
                 id={amiibo._id}
@@ -53,7 +54,9 @@ console.log(this.props.wishList[1]);
                 character={this.props.character}
                 type={this.props.type}
                 key={amiibo._id}
+
                  />
+
               </div>
           )
           })}

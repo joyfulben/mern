@@ -33,13 +33,14 @@ let id = this.props.id
       return (
 
 
-      <div>
-        <form className="float-right" onSubmit={this.handleSubmit}>
-          <div>
-            <label htmlFor="character">Character Name</label>
-            <input type="text" id="character" name="character" onChange={this.props.change} />
-            <label htmlFor="type">Amiibo Type</label>
-            <input type="text" id="type" name="type"
+      <div className="mario">
+        <form  onSubmit={this.handleSubmit}>
+          <div class="form-group">
+            <label htmlFor="character"></label>
+            <input class="input form-control form-control-sm" placeholder="Character Name" type="text" id="character" name="character" onChange={this.props.change} />
+            <label htmlFor="type"></label>
+            <input class="input form-control form-control-sm"
+            placeholder="Amiibo Type" type="text" id="type" name="type"
             onChange={this.props.change}/>
             <input type="submit" value="Update Amiibo" />
           </div>
