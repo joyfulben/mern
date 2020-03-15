@@ -7,6 +7,7 @@ let baseURL = ''
 if (process.env.NODE_ENV === 'development') {
   baseURL = 'http://localhost:3003'
 }
+
   export default class App extends React.Component {
     constructor(props){
       super(props)
@@ -25,13 +26,10 @@ if (process.env.NODE_ENV === 'development') {
       this.addToList = this.addToList.bind(this)
       this.handleUpdateAmiibo = this.handleUpdateAmiibo.bind(this)
       this.handleChange = this.handleChange.bind(this)
-      this.handleSubmit = this.handleSubmit.bind(this)
-      this.idChanger = this.idChanger.bind(this)
+      this.handleAddAmiibo = this.handleAddAmiibo.bind(this)
     }
-    idChanger (id) {
-      this.setState({
-        id: id
-      })
+    componentDidMount(){
+      this.getAmiibos()
     }
     handleUpdateAmiibo(amiibo) {
       const copyAmiibos = [amiibo, ...this.state.amiiboWishlist]
@@ -42,26 +40,21 @@ if (process.env.NODE_ENV === 'development') {
     handleChange (event) {
  this.setState({ [event.currentTarget.id]: event.currentTarget.value})
 }
-  async handleSubmit (event) {
+handleAddAmiibo(amiiboEdit) {
   try{
-    let response = await fetch(baseURL + '/amiibos/' + event.id,
-    {
-        method: 'PUT', // Put, Delete. Only for a non-Get request
-        body: JSON.stringify({}),
-        headers: {
-            'Content-Type': 'application/json'
-          }
-        })
-        let updatedamiibo = await response.json()
-        const foundamiibo = this.state.amiiboWishlist.findIndex(foundItem => foundItem._id === event._id)
-        const copyAmiibo = [...this.state.amiiboWishlist]
-        copyAmiibo[foundamiibo].character = updatedamiibo.character
-        copyAmiibo[foundamiibo].type = updatedamiibo.type
-        this.setState({amiiboWishlist: copyAmiibo})
-      }catch(e){
-        console.error({'Error': e})
-      }
-    }
+  let testId = amiiboEdit._id
+        let copyAmiibo = [...this.state.amiiboWishlist]
+  const foundAmiibo = copyAmiibo.findIndex(foundAmiibo => foundAmiibo._id === testId)
+
+  copyAmiibo[foundAmiibo].character = amiiboEdit.character
+  copyAmiibo[foundAmiibo].type = amiiboEdit.type
+  this.setState({amiiboWishlist: copyAmiibo})
+} catch(e){
+  console.error(e);
+}
+
+}
+
 
     async getAmiibos() {
       try {
@@ -120,16 +113,9 @@ if (process.env.NODE_ENV === 'development') {
         console.error({'Error': e})
       }
     }
-    componentDidMount(){
-      this.getAmiibos()
-    }
-    handleAddAmiibo(amiibo) {
-      const copyAmiibos = [amiibo, ...this.state.amiiboWishlist]
-      this.setState({
-        amiiboWishlist: copyAmiibos
-      })
-    }
+
     render(){
+      console.log(this.state.amiiboWishlist);
       return(
         <>
         <h1>Welcome to <img src={amiiboImage} alt=''/> Wishlist!</h1>
@@ -140,7 +126,10 @@ if (process.env.NODE_ENV === 'development') {
           update={this.handleUpdateAmiibo}
           change={this.handleChange}
           submit={this.handleSubmit}
-          id={this.idChanger}
+          baseURL={baseURL}
+          handleAddAmiibo={this.handleAddAmiibo}
+          character={this.state.character}
+          type={this.state.type}
           />
         <footer className="d-flex justify-content-between">
           <a href="https://www.nintendo.com/amiibo/">Amiibo Info</a>
