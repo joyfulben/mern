@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import Wishlist from './Wishlist.js'
+import Update from './UpdateAmiibo.js'
 
   export default class AmiiboHomepage extends Component {
     constructor(props){
@@ -8,11 +8,13 @@ import Wishlist from './Wishlist.js'
         showSlide: false
       }
     }
+
     render(){
+// console.log(this.props.wishList.indexOf(this.props.wishList[0]._id));
+console.log(this.props.wishList[1]);
       return(
         <div className="everything">
           <div className="amiibo-index">
-            <Wishlist mainList={this.props.mainList} wishList={this.props.wishList} />
             <ul className="ul-index d-flex flex-wrap">
             { this.props.mainList.map((amiibo, i) => {
 
@@ -28,15 +30,35 @@ import Wishlist from './Wishlist.js'
             </ul>
           </div>
           <ul className="wishlist">
-            { this.props.wishList.map((amiibo, i) => { return (
-              <li className={`wish${i} `} key={i + ''} onClick={() => {
-                this.props.delete(amiibo._id)
-              }}>
-              <img src={`${amiibo.image}`} alt='' />
-              <p className="mx-auto">{amiibo.character}</p>
-              <hr />
-              </li>
+            {this.props.wishList.map((amiibo, i) => {
 
+               return (
+
+              <div className="d-flex">
+
+                <li className={`wish${i} `} key={i + ''} onClick={() => {
+                  this.props.delete(amiibo._id)
+                }}>
+                <img src={`${amiibo.image}`} alt='' />
+                <p className="mx-auto">{amiibo.character}</p>
+                <button>edit</button>
+
+                <hr />
+                </li>
+                <Update
+                update={this.props.update}
+                change={this.props.change}
+                submit={this.props.submit}
+                wishlist={this.props.wishList}
+                id={amiibo._id}
+                idChanger={this.props.id}
+                baseURL={this.props.baseURL}
+                handleAddAmiibo={this.props.handleAddAmiibo}
+                character={this.props.character}
+                type={this.props.type}
+                key={amiibo._id}
+                 />
+              </div>
           )
           })}
           </ul>
