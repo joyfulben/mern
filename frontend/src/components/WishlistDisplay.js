@@ -30,7 +30,7 @@ import Hidden from './HiddenDisplay.js'
     return(
 
       <ul className="wishlist">
-              <button onClick={() => this.tester()}>test</button>
+
         {this.props.wishList.map((amiibo, i) => {
            return (
 
