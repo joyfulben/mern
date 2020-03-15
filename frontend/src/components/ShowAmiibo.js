@@ -13,6 +13,7 @@ import React from 'react'
 
           <h5>Amiibo Series: <br/><br/> <span>{this.props.amiiboShower.amiiboSeries}</span></h5>
           <h5>Type: <span>{this.props.amiiboShower.type}</span></h5>
+          <button className="buy" >Buy Me!</button>
         </div>
         </div>
       )

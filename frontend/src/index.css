@@ -24,7 +24,7 @@ margin: 10px ;
 border-radius: 10%;
 }
 .mario {
-  margin: 10px auto;
+  margin: 0 auto;
   background-image: url("https://lh3.googleusercontent.com/proxy/-5zMyvaPwAackcGfsWWJUGAMa97kLYd4tiGy3peqFkL391omT1uMD3VEQMxwrWf_SFDEEwe8B5Pfdb2SFvgBP2mmHJslHPHV-dY8kqfUaTLJSVginOM");
   background-size: contain;
   background-repeat: no-repeat;
@@ -82,8 +82,10 @@ p {
   margin: 10px auto;
   width: 40%;
 }
+
+
 .wish {
-  width: 60px;
+  max-height: 120px;
 }
 .ul-index{
   animation-duration: .5s;
@@ -116,12 +118,50 @@ p {
 }
 .showInfo {
   margin: 100px 0 0 28%;
-
+}
+.buy {
+  animation-duration: 3s;
+  animation-name: buySlide
 }
 footer {
   background-color: rgb(181, 181, 181);
   margin-bottom: 0;
+  padding: 10px 20px;
 }
 footer a, footer h6 {
   font-size: 12px;
+}
+
+/* animation */
+
+@keyframes buySlide {
+  0% {
+    margin-left: 50%;
+    width: 200%;
+  }
+  10%{
+    right: 0px
+  }
+  20%{
+
+    right: 15px;
+  }
+  30%{
+    right: 30px;
+  }
+  40%{
+
+    right: 45px;
+  }
+  50%{
+    right: 80px;
+  }
+  60%{
+
+    transform: scale(2);
+  }
+  100% {
+    margin-left: 0%;
+    width: 75%
+  }
 }
