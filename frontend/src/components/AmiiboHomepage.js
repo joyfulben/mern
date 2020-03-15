@@ -11,7 +11,6 @@ import ShowAmiibo from './ShowAmiibo.js'
 
     render(){
 // console.log(this.props.wishList.indexOf(this.props.wishList[0]._id));
-console.log(this.props.mainList[1]);
       return(
         <div className="everything">
           <div className="amiibo-index">
@@ -47,10 +46,12 @@ console.log(this.props.mainList[1]);
               handleAddAmiibo={this.props.handleAddAmiibo}
               character={this.props.character}
               type={this.props.type}
+
               toggleEdit={this.props.toggleEdit}
               delete={this.props.delete}
               editShow={this.props.editShow}
               />
+
 
           }
 

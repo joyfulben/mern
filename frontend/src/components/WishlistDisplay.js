@@ -39,8 +39,9 @@ import Hidden from './HiddenDisplay.js'
             <li className={`wish${i} `}  onClick={() => {
               this.props.delete(amiibo._id)
             }}>
-            <img src={`${amiibo.image}`} alt='' />
+            <img className="wish" src={`${amiibo.image}`} alt='' />
             <p className="mx-auto">{amiibo.character}</p>
+
               <button onClick={()=>{this.stateChanger(i)}}>edit</button>
 
 
