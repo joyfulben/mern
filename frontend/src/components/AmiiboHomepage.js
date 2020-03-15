@@ -17,10 +17,12 @@ import Wishlist from './Wishlist.js'
             { this.props.mainList.map((amiibo, i) => {
 
             return (
+
               <li className={`index${i} li-index`} key={i} onDoubleClick={() => this.props.add(i)}>
                 <img  src={`${amiibo.image}`} alt=''/>
                 <p>{amiibo.character}</p>
               </li>
+
             )
             })}
             </ul>
