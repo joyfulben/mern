@@ -63,9 +63,7 @@ h1 img {
   display: flex;
   background-image: url({backgroundImage});
 }
-.everything img{
-  width: 50px;
-}
+
 p {
   font-size: 12px;
   width: 50px;
@@ -93,9 +91,7 @@ p {
   background-image: none;
 
 }
-.wishlist img {
-  height: 100px;
-}
+
 
 .index0 {
 
@@ -106,4 +102,8 @@ footer {
 }
 footer a, footer h6 {
   font-size: 12px;
+}
+.test{
+  height: 300px;
+  margin-top: 40px;
 }
