@@ -5,7 +5,7 @@ import ShowAmiibo from './ShowAmiibo.js'
     constructor(props){
       super(props)
       this.state = {
-        showSlide: false
+        showEdit: false
       }
     }
 
@@ -20,7 +20,12 @@ console.log(this.props.mainList[1]);
 
             return (
 
-              <li className={`index${i} li-index`} key={i} onMouseOver={() => this.props.amiiboSniffer(amiibo)} onClick={() => {this.props.toggleView()}} onDoubleClick={() => this.props.add(i)}>
+              <li className={`index${i} li-index`}
+                key={i}
+                onMouseOver={() => this.props.amiiboSniffer(amiibo)}
+                onClick={this.props.toggleView} 
+                onDoubleClick={() => this.props.add(i)}>
+
                 <img  src={`${amiibo.image}`} alt=''/>
                 <p>{amiibo.character}</p>
               </li>

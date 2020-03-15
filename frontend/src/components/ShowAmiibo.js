@@ -4,7 +4,10 @@ import React from 'react'
 
     render(){
       return(
-        <div className="wishlist">{this.props.amiiboShower.character}</div>
+        <div className="wishlist">
+          <img className="test" src={this.props.amiiboShower.image} />
+        <h2 >{this.props.amiiboShower.name}</h2>
+        </div>
       )
     }
   }

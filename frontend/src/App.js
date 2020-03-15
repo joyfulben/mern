@@ -16,6 +16,7 @@ if (process.env.NODE_ENV === 'development') {
         amiiboWishlist: [],
         amiibo: null,
         isHidden: false,
+        showEdit: false,
         character: '',
         gameSeries: '',
         image: '',
@@ -143,8 +144,9 @@ handleAddAmiibo(amiiboEdit) {
           type={this.state.type}
           toggleView={this.toggleView}
           isHidden={this.state.isHidden}
-          amiiboSniffer={this.amiiboSniffer}
           amiiboShower={this.state.amiibo}
+          amiiboSniffer={this.amiiboSniffer}
+
           />
         <footer className="d-flex justify-content-between">
           <a href="https://www.nintendo.com/amiibo/">Amiibo Info</a>
