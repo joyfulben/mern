@@ -10,7 +10,6 @@ import ShowAmiibo from './ShowAmiibo.js'
     }
 
     render(){
-// console.log(this.props.wishList.indexOf(this.props.wishList[0]._id));
       return(
         <div className="everything">
           <div className="amiibo-index">
