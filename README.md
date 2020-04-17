@@ -7,5 +7,8 @@ The Amiibo Wishlist allows you to create a list of your favorite amiibos by addi
 
 React for frontend, MongoDB for backend
 
+## Live Link
+
+[Link](https://amiibo-wishlist.herokuapp.com/)
 
 Project made by Jamal McDowell & Ben Fisher
