@@ -9,6 +9,6 @@ React for frontend, MongoDB for backend
 
 ## Live Link
 
-[Link](https://amiibo-wishlist.herokuapp.com/)
+### [Link](https://amiibo-wishlist.herokuapp.com/)
 
-Project made by Jamal McDowell & Ben Fisher
+### Project made by Jamal McDowell & Ben Fisher
